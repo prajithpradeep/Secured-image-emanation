@@ -2,7 +2,6 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import pickle
 
 
 dataset = pd.read_csv('Restaurant_Reviews.tsv', delimiter='\t',quoting = 3)
@@ -41,12 +40,6 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20, rand
 from sklearn.naive_bayes import GaussianNB
 classifier = GaussianNB()
 classifier.fit(X_train, y_train)
-
-
-filename = 'finalized_model.sav'
-pickle.dump(classifier, open(filename, 'wb'))
-
-
 
 y_pred = classifier.predict(X_test)
 
